@@ -10,14 +10,32 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [showBanner, setShowBanner] = useState(true);
 
     return (
         <header className="fixed top-0 z-50 w-full bg-white">
-
-            <div className="bg-[#18181b] py-2 text-center text-[11px] font-medium tracking-wide text-white">
-                {BrandConfig.name} Achieves SOC2 Type II Certification for Advanced AI Security{" "}
-                <a href="#" className="ml-1 text-pink-400 hover:underline">Learn more</a>
-            </div>
+            {/* Top Banner */}
+            <AnimatePresence>
+                {showBanner && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="relative overflow-hidden bg-[#18181b] py-2 text-center text-[11px] font-medium tracking-wide text-white"
+                    >
+                        <div className="container mx-auto px-6 pr-12">
+                            {BrandConfig.name} Achieves SOC2 Type II Certification for Advanced AI Security{" "}
+                            <a href="#" className="ml-1 text-pink-400 hover:underline">Learn more</a>
+                        </div>
+                        <button
+                            onClick={() => setShowBanner(false)}
+                            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full p-1 text-white/50 transition-colors hover:text-white"
+                        >
+                            <X size={14} />
+                        </button>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             <nav className="border-b border-zinc-100 py-6">
                 <div className="container mx-auto px-6">
