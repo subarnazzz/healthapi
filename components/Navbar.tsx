@@ -21,6 +21,10 @@ export const Navbar = () => {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
+                        transition={{
+                            duration: 0.15,
+                            ease: "easeOut"
+                        }}
                         className="relative overflow-hidden bg-[#18181b] py-2 text-center text-[11px] font-medium tracking-wide text-white"
                     >
                         <div className="container mx-auto px-6 pr-12">
